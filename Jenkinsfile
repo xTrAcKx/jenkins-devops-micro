@@ -1,13 +1,3 @@
-// //script
-
-// node {
-// 	echo "Buiid"
-// 	echo "Test"
-// 	echo "Integration Test"
-	
-// }
-
-//declarative
 
 pipeline {
 	agent any
@@ -90,3 +80,18 @@ pipeline {
 	}
 	
 }
+
+
+
+
+
+// //script
+
+// node {
+// 	echo "Buiid"
+// 	echo "Test"
+// 	echo "Integration Test"
+	
+// }
+
+//declarative
