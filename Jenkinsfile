@@ -30,6 +30,16 @@ pipeline {
 			}
 		}
 		
+	} post {
+		always {
+			echo "I run always"
+		}
+		success {
+			echo "i am success"
+		}
+		failure {
+			echo "make failure"
+		}
 	}
 
 
