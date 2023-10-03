@@ -1,3 +1,13 @@
+// //script
+
+// node {
+// 	echo "Buiid"
+// 	echo "Test"
+// 	echo "Integration Test"
+	
+// }
+
+//declarative
 
 pipeline {
 	agent any
@@ -28,7 +38,6 @@ pipeline {
 		stage('Compile') {
 			steps {
 				sh "mvn clean compile"
-				sh "mvn package -DskipTests"
 			}
 		}
 
@@ -57,8 +66,6 @@ pipeline {
 		// 	}
 		// }
 		
-
-		
 		// stage('Integration Test') {
 		// 	steps {
 		// 		echo "mvn failsafe:integration-test failsafe:verify"
@@ -80,18 +87,3 @@ pipeline {
 	}
 	
 }
-
-
-
-
-
-// //script
-
-// node {
-// 	echo "Buiid"
-// 	echo "Test"
-// 	echo "Integration Test"
-	
-// }
-
-//declarative
