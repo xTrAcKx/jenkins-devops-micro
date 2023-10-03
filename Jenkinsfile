@@ -38,21 +38,40 @@ pipeline {
 		stage('Compile') {
 			steps {
 				sh "mvn clean compile"
+				sh "mvn package -DskipTests"
 			}
 		}
 
-		
-		stage('Test') {
+		stage('Build Docker image') {
 			steps {
-				sh "mvn test"
+				// "docker build -t track777/currency-exchange-azure-devops:$env.BUILD_TAG"
+				script {
+					dockerImage = docker.build("track777/currency-exchange-azure-devops:${$env.BUILD_TAG}")
+				}
+			}
+		}
+
+		stage('Push Docker image') {
+			steps {
+				docker.withRegistry('', 'dockerhub') {
+					dockerImage.push();
+					dockerImage.push('latest');
+				}
+		
 			}
 		}
 		
-		stage('Integration Test') {
-			steps {
-				echo "mvn failsafe:integration-test failsafe:verify"
-			}
-		}
+		// stage('Test') {
+		// 	steps {
+		// 		sh "mvn test"
+		// 	}
+		// }
+		
+		// stage('Integration Test') {
+		// 	steps {
+		// 		echo "mvn failsafe:integration-test failsafe:verify"
+		// 	}
+		// }
 		
 	} 
 	post {
